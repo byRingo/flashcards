@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 require("dotenv").config();
 
 import Deck from "./models/Deck";
@@ -8,6 +9,7 @@ const app = express();
 const PORT = process.env.PORT;
 const DB_CONN = process.env.DB_CONN;
 
+app.use(cors());
 app.use(express.json());
 app.post("/decks", async (req: Request, res: Response) => {
   const newDeck = new Deck({
@@ -15,6 +17,11 @@ app.post("/decks", async (req: Request, res: Response) => {
   });
   const createdDeck = await newDeck.save();
   res.json(createdDeck);
+});
+
+app.get("/decks", async (req: Request, res: Response) => {
+  const decks = await Deck.find();
+  res.json(decks);
 });
 
 mongoose.connect(DB_CONN).then(() => {
