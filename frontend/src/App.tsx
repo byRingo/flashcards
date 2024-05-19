@@ -1,10 +1,32 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import styled from "styled-components";
 
 type TDeck = {
   title: string;
   _id: string;
 };
+
+const GridSection = styled.div`
+  display: grid;
+  margin-top: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+  width: 800px;
+`;
+
+const GridCell = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 1.5em;
+  font-weight: 500;
+`;
 
 export default function App() {
   const [decks, setDecks] = useState<TDeck[]>([]);
@@ -38,11 +60,11 @@ export default function App() {
 
   return (
     <>
-      <ul className="decks">
+      <GridSection>
         {decks.map((cur, index) => {
-          return <li key={index}>{cur.title}</li>;
+          return <GridCell key={index}>{cur.title}</GridCell>;
         })}
-      </ul>
+      </GridSection>
       <form onSubmit={handleCreateDeck}>
         <label htmlFor="deck-title">Deck Title</label>
         <input
