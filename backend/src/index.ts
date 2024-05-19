@@ -24,6 +24,12 @@ app.get("/decks", async (req: Request, res: Response) => {
   res.json(decks);
 });
 
+app.delete("/decks/:deckId", async (req: Request, res: Response) => {
+  const deckId = req.params.deckId;
+  const deletedDeck = await Deck.findByIdAndDelete(deckId);
+  res.json(deletedDeck);
+});
+
 mongoose.connect(DB_CONN).then(() => {
   app.listen(PORT, () => {
     console.log(`Server: http://localhost:${PORT}/`);
