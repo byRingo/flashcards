@@ -18,9 +18,10 @@ export const AppSection = styled.div`
 
 export const GridSection = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 7rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-gap: 15px;
-  width: 800px;
+  width: 600px;
 `;
 
 export const GridCell = styled.div`

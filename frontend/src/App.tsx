@@ -8,6 +8,7 @@ import {
   GridSection,
   SubmitButton,
 } from "./assets/styles.tsx";
+import { Link } from "react-router-dom";
 
 type TDeck = {
   title: string;
@@ -56,7 +57,7 @@ export default function App() {
               <DeleteButton onClick={() => handleDeleteDeck(cur._id)}>
                 X
               </DeleteButton>
-              {cur.title}
+              <Link to={`decks/${cur._id}`}>{cur.title}</Link>
             </GridCell>
           );
         })}
