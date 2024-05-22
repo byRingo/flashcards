@@ -8,14 +8,9 @@ import {
   SubmitButton,
 } from "./assets/styles.tsx";
 import { Link } from "react-router-dom";
-import { getDecks } from "./api/getDecks.ts";
+import { getDecks, TDeck } from "./api/getDecks.ts";
 import { createDeck } from "./api/createDeck.ts";
 import { deleteDeck } from "./api/deleteDeck.ts";
-
-type TDeck = {
-  title: string;
-  _id: string;
-};
 
 export default function App() {
   const [decks, setDecks] = useState<TDeck[]>([]);
