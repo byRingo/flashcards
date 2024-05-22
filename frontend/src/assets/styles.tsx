@@ -12,8 +12,10 @@ export const SubmitButton = styled.button`
 export const AppSection = styled.div`
   display: flex;
   align-items: center;
-  gap: 3rem;
   flex-direction: column;
+  justify-content: center;
+  gap: 5rem;
+  height: 98dvh;
 `;
 
 export const GridSection = styled.div`
