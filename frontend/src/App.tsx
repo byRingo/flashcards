@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import {
   AppSection,
   DeleteButton,
@@ -9,6 +8,9 @@ import {
   SubmitButton,
 } from "./assets/styles.tsx";
 import { Link } from "react-router-dom";
+import { getDecks } from "./api/getDecks.ts";
+import { createDeck } from "./api/createDeck.ts";
+import { deleteDeck } from "./api/deleteDeck.ts";
 
 type TDeck = {
   title: string;
@@ -20,33 +22,27 @@ export default function App() {
   const [title, setTitle] = useState<string>("");
 
   const handleDeleteDeck = async (deckId: string) => {
-    await axios.delete(`http://localhost:5000/decks/${deckId}`);
+    await deleteDeck(deckId);
+    setDecks(decks.filter((deck) => deck._id !== deckId));
   };
   const handleCreateDeck = async (e: React.FormEvent) => {
     e.preventDefault();
-    await axios
-      .post("http://localhost:5000/decks", {
-        title: title,
-      })
-      .then((r) => {
-        console.log(r);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const newDeck = await createDeck(title).catch((err) => {
+      console.log(err);
+    });
+    setDecks([...decks, newDeck]);
     setTitle("");
   };
 
   useEffect(() => {
     async function fetchDecks() {
-      await axios
-        .get("http://localhost:5000/decks")
-        .then((response) => setDecks(response.data));
+      const newDeck = await getDecks();
+      setDecks(newDeck);
     }
     fetchDecks().catch((err) => {
       console.log(err);
     });
-  }, [decks]);
+  }, []);
 
   return (
     <AppSection>
