@@ -6,6 +6,7 @@ import { deleteDeck } from "../api/deleteDeck.ts";
 import { createDeck } from "../api/createDeck.ts";
 import {
   AppSection,
+  DecksLabel,
   DeleteButton,
   FormSection,
   GridCell,
@@ -44,6 +45,7 @@ export default function App() {
 
   return (
     <AppSection>
+      <DecksLabel>Your Decks</DecksLabel>
       <GridSection>
         {decks.map((cur, index) => {
           return (
@@ -51,7 +53,10 @@ export default function App() {
               <DeleteButton onClick={() => handleDeleteDeck(cur._id)}>
                 X
               </DeleteButton>
-              <Link to={`decks/${cur._id}`} style={{ color: "#7575ca" }}>
+              <Link
+                to={`decks/${cur._id}`}
+                style={{ color: "#7575ca", fontSize: "20px" }}
+              >
                 {cur.title}
               </Link>
             </GridCell>
