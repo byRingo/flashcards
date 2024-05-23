@@ -5,4 +5,9 @@ export default createGlobalStyle`
         text-decoration: none;
         color: black;
     }
+    body {
+        background-color: #252425;
+        margin: 0;
+    }
+    
 `;
