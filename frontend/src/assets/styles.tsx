@@ -74,3 +74,21 @@ export const HeaderComponent = styled.div`
   align-items: center;
   height: 80px;
 `;
+
+export const DeckName = styled.div`
+  text-align: center;
+  color: white;
+  font-size: 36px;
+  margin-top: -8rem;
+`;
+
+export const CardName = styled.p`
+  color: #7575ca;
+`;
+
+export const DecksLabel = styled.div`
+  text-align: center;
+  font-size: 38px;
+  color: white;
+  margin-top: -10rem;
+`;

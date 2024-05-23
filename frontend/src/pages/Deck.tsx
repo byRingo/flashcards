@@ -6,6 +6,8 @@ import { createCard } from "../api/createCard.ts";
 import { getDeck } from "../api/getDeck.ts";
 import {
   AppSection,
+  CardName,
+  DeckName,
   DeleteButton,
   FormSection,
   GridCell,
@@ -47,7 +49,7 @@ export default function Deck() {
 
   return (
     <AppSection>
-      {JSON.stringify(deck?.title)}
+      <DeckName>{deck?.title}</DeckName>
       <GridSection>
         {cards.map((cur, index) => {
           return (
@@ -55,7 +57,7 @@ export default function Deck() {
               <DeleteButton onClick={() => handleDeleteCard(index)}>
                 X
               </DeleteButton>
-              <p>{cur}</p>
+              <CardName>{cur}</CardName>
             </GridCell>
           );
         })}
