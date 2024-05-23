@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Deck from "./Deck.tsx";
+import App from "./pages/App.tsx";
+import Deck from "./pages/Deck.tsx";
+import Header from "./pages/Header.tsx";
 import GlobalStyles from "./assets/globalStyles.ts";
 
 const router = createBrowserRouter([
   {
-    path: "",
+    path: "/",
     element: <App />,
   },
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    <Header />
     <RouterProvider router={router} />
     <GlobalStyles />
   </React.StrictMode>,

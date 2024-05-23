@@ -15,7 +15,7 @@ export const AppSection = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 5rem;
-  height: 98dvh;
+  height: 89dvh;
 `;
 
 export const GridSection = styled.div`
@@ -34,6 +34,7 @@ export const GridCell = styled.div`
   border: 1px solid black;
   font-size: 1.5em;
   font-weight: 500;
+  background-color: white;
 `;
 
 export const FormSection = styled.form`
@@ -56,4 +57,20 @@ export const DeleteButton = styled.button`
     color: red;
     border: 1px solid black;
   }
+`;
+
+export const LabelComponent = styled.label`
+  color: white;
+`;
+
+export const InputComponent = styled.input`
+  padding: 0.3rem;
+`;
+
+export const HeaderComponent = styled.div`
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 80px;
 `;

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
+
+import { Link } from "react-router-dom";
+import { getDecks, TDeck } from "../api/getDecks.ts";
+import { deleteDeck } from "../api/deleteDeck.ts";
+import { createDeck } from "../api/createDeck.ts";
 import {
   AppSection,
   DeleteButton,
   FormSection,
   GridCell,
   GridSection,
+  InputComponent,
+  LabelComponent,
   SubmitButton,
-} from "./assets/styles.tsx";
-import { Link } from "react-router-dom";
-import { getDecks, TDeck } from "./api/getDecks.ts";
-import { createDeck } from "./api/createDeck.ts";
-import { deleteDeck } from "./api/deleteDeck.ts";
+} from "../assets/styles.tsx";
 
 export default function App() {
   const [decks, setDecks] = useState<TDeck[]>([]);
@@ -48,14 +51,16 @@ export default function App() {
               <DeleteButton onClick={() => handleDeleteDeck(cur._id)}>
                 X
               </DeleteButton>
-              <Link to={`decks/${cur._id}`}>{cur.title}</Link>
+              <Link to={`decks/${cur._id}`} style={{ color: "#7575ca" }}>
+                {cur.title}
+              </Link>
             </GridCell>
           );
         })}
       </GridSection>
       <FormSection onSubmit={handleCreateDeck}>
-        <label htmlFor="deck-title">Deck Title</label>
-        <input
+        <LabelComponent htmlFor="deck-title">Deck Title</LabelComponent>
+        <InputComponent
           id="deck-title"
           type="text"
           value={title}
